@@ -7,84 +7,45 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            padding: 20px;
         }
         table {
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
         }
-        th, td {
+        td {
             border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
+            text-align: center;  /* Center horizontally */
+            vertical-align: middle;  /* Center vertically */
+            padding: 20px;  /* Add some padding */
         }
-        th {
-            background-color: #f2f2f2;
-        }
-        tr:hover {
-            background-color: #f1f1f1;
+        img {
+            max-width: 100px;  /* Ensure images do not exceed a certain width */
+            height: auto;      /* Maintain aspect ratio */
         }
     </style>
 </head>
 <body>
 
-<h2>Interactive Table Example</h2>
-
-<input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Search for names..">
-
-<table id="myTable">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Country</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>John Doe</td>
-            <td>25</td>
-            <td>USA</td>
-        </tr>
-        <tr>
-            <td>Anna Smith</td>
-            <td>30</td>
-            <td>UK</td>
-        </tr>
-        <tr>
-            <td>Peter Jones</td>
-            <td>45</td>
-            <td>Canada</td>
-        </tr>
-    </tbody>
+<table>
+    <tr>
+        <td><a href="https://doublestarsjournal.org/index.php/jdso">Journal of Double Star Observations</a></td>
+        <td><img src='jdso_logo.png' alt="JDSO Logo"></td>
+    </tr>
+    <tr>
+        <td><a href="https://lco.global/education/partners/">Las Cumbres Observatory Global Sky Partners</a></td>
+        <td><img src='lco_gsp_logo.png' alt="LCO Logo"></td>
+    </tr>
+    <tr>
+        <td><a href="https://exoplanets.nasa.gov/exoplanet-watch/about-exoplanet-watch/overview/">Exoplanet Watch</a></td>
+        <td><img src='epw_logo.png' alt="EPW Logo"></td>
+    </tr>
+    <tr>
+        <td><a href="https://www.aavso.org/">American Association of Variable Star Observers</a></td>
+        <td><img src='aavso_logo.png' alt="AAVSO Logo"></td>
+    </tr>
 </table>
-
-<script>
-function filterTable() {
-    let input = document.getElementById('searchInput');
-    let filter = input.value.toLowerCase();
-    let table = document.getElementById('myTable');
-    let tr = table.getElementsByTagName('tr');
-
-    for (let i = 1; i < tr.length; i++) {
-        let td = tr[i].getElementsByTagName('td');
-        let rowVisible = false;
-        for (let j = 0; j < td.length; j++) {
-            if (td[j]) {
-                if (td[j].innerHTML.toLowerCase().indexOf(filter) > -1) {
-                    rowVisible = true;
-                    break;
-                }
-            }
-        }
-        if (rowVisible) {
-            tr[i].style.display = '';
-        } else {
-            tr[i].style.display = 'none';
-        }
-    }
-}
-</script>
 
 </body>
 </html>
