@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Interactive Table Example</h2>
+
+<input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Search for names..">
+
+<table id="myTable">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Country</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>John Doe</td>
+            <td>25</td>
+            <td>USA</td>
+        </tr>
+        <tr>
+            <td>Anna Smith</td>
+            <td>30</td>
+            <td>UK</td>
+        </tr>
+        <tr>
+            <td>Peter Jones</td>
+            <td>45</td>
+            <td>Canada</td>
+        </tr>
+    </tbody>
+</table>
+
+<script>
+function filterTable() {
+    let input = document.getElementById('searchInput');
+    let filter = input.value.toLowerCase();
+    let table = document.getElementById('myTable');
+    let tr = table.getElementsByTagName('tr');
+
+    for (let i = 1; i < tr.length; i++) {
+        let td = tr[i].getElementsByTagName('td');
+        let rowVisible = false;
+        for (let j = 0; j < td.length; j++) {
+            if (td[j]) {
+                if (td[j].innerHTML.toLowerCase().indexOf(filter) > -1) {
+                    rowVisible = true;
+                    break;
+                }
+            }
+        }
+        if (rowVisible) {
+            tr[i].style.display = '';
+        } else {
+            tr[i].style.display = 'none';
+        }
+    }
+}
+</script>
+
+</body>
+</html>
